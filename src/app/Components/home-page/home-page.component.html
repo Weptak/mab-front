@@ -1,1 +1,75 @@
-<p>home-page works!</p>
+<div class="container-fluid carousel mt-3">
+  <ngb-carousel *ngIf="currentExpos" class="container-md">
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="currentExpos[0].imageUrl" alt="Random first slide" />
+      </div>
+      <div class="carousel-caption">
+        <h4>{{ currentExpos[0].title }}</h4>
+        <p *ngIf="currentExpos[0].description.length > 100">
+          {{ currentExpos[0].description | slice: 0:100 }} ...
+        </p>
+        <p *ngIf="currentExpos[0].description.length < 100">
+          {{ currentExpos[0].description }}
+        </p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="currentExpos[1].imageUrl" alt="Random second slide" />
+      </div>
+      <div class="carousel-caption">
+        <h4>{{ currentExpos[1].title }}</h4>
+        <p *ngIf="currentExpos[1].description.length > 100">
+          {{ currentExpos[1].description | slice: 0:100 }}...
+        </p>
+        <p *ngIf="currentExpos[1].description.length < 100">
+          {{ currentExpos[1].description }}
+        </p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="currentExpos[2].imageUrl" alt="Random third slide" />
+      </div>
+      <div class="carousel-caption">
+        <h4>{{ currentExpos[2].title }}</h4>
+        <p *ngIf="currentExpos[2].description.length > 100">
+          {{ currentExpos[2].description | slice: 0:100 }} ...
+        </p>
+        <p *ngIf="currentExpos[2].description.length < 100">
+          {{ currentExpos[2].description }}
+        </p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+<div class="container-fluid mt-3">
+  <div class="card mb-3 d-md-block" id="presentation" style="max-width: 1100px">
+    <div class="row no-gutters">
+      <div class="col-md-5">
+        <img src="/assets/images/schuiten-brusel-301y.jpg" class="card-img" />
+      </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <h5 class="card-title mb-5 text-center">
+            Le Musée Archéologique de Brüsel
+          </h5>
+
+          <h6>Présentation</h6>
+
+          <p class="card-text">
+            Lorem ipsum dolor sit amet,consectetur adipiscing elit. Integer nec
+            odio. Praesent libero. Sed cursus ante dapibus diam.
+          </p>
+          <p class="card-text">
+            Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem
+            at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut
+            ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel,
+            suscipit quis, luctus non, massa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
