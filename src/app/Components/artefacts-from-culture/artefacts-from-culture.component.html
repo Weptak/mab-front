@@ -1,1 +1,60 @@
-<p>artefacts-from-culture works!</p>
+<div class="d-flex justify-content-end">
+  <label class="pt-2" for="pageSize">Résultats par page : &nbsp;</label>
+  <select
+    name="pageSize"
+    class="form-control w-auto"
+    (change)="selectPageSize($event)"
+  >
+    <option *ngFor="let size of sizeOptions" [value]="size">{{ size }}</option>
+  </select>
+  <ngb-pagination
+    class="pt-1 ml-2"
+    [collectionSize]="totalElements"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [ellipses]="true"
+    [boundaryLinks]="true"
+    size="sm"
+    (pageChange)="loadPageFromServer($event)"
+  >
+  </ngb-pagination>
+</div>
+<div class="card mb-3" *ngFor="let item of artefacts">
+  <div class="row no-gutters">
+    <div class="col-md-4 text-center my-auto">
+      <img
+        src="{{ item.imageURL }}"
+        class="card-img rounded"
+        style="max-width: 75%"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text">{{ item.objectDescription }}</p>
+        <p class="card-text">
+          <small class="text-muted">{{ item.culture.name }}</small>
+          <small class="text-muted" *ngIf="item.culturalPhase != null">
+            - {{ item.culturalPhase }}</small
+          >
+        </p>
+        <p class="card-text">
+          <small class="text-muted">{{ item.periodDescription }}</small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <ngb-pagination
+    [collectionSize]="totalElements"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [ellipses]="true"
+    [boundaryLinks]="true"
+    size="md"
+    (pageChange)="loadPageFromServer($event)"
+  >
+  </ngb-pagination>
+</div>

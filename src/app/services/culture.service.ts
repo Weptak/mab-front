@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { IArtefact } from '../domain/iartefact';
 import { ICulture } from '../domain/iculture';
 
 @Injectable({
@@ -14,5 +15,20 @@ export class CultureService {
 
   public getAllCultures(): Observable<ICulture[]> {
     return this._http.get<ICulture[]>(this._url);
+  }
+
+  public getArtefactsFromCultureId(
+    id: number,
+    page: number,
+    items: number
+  ): Observable<IArtefact[]> {
+    let myParams = new HttpParams();
+    myParams = myParams.set('pageNumber', page.toString());
+    myParams = myParams.set('itemsPerPage', items.toString());
+    const options = { params: myParams };
+    return this._http.get<IArtefact[]>(
+      this._url + '/' + id + '/artefacts',
+      options
+    );
   }
 }
