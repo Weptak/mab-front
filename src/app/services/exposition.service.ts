@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IExposition } from '../domain/iexposition';
-import { Page } from '../domain/page';
 
 @Injectable({
   providedIn: 'root',
@@ -16,22 +15,19 @@ export class ExpositionService {
   public getAllCurrentExpos(
     page: number,
     items: number
-  ): Observable<Page<IExposition>> {
+  ): Observable<IExposition[]> {
     let myParams = new HttpParams();
     myParams = myParams.set('pageNumber', page.toString());
     myParams = myParams.set('itemsPerPage', items.toString());
     const options = { params: myParams };
-    return this._http.get<Page<IExposition>>(this._url, options);
+    return this._http.get<IExposition[]>(this._url, options);
   }
-  public getOldExpos(
-    page: number,
-    items: number
-  ): Observable<Page<IExposition>> {
+  public getOldExpos(page: number, items: number): Observable<IExposition[]> {
     let myParams = new HttpParams();
     myParams = myParams.set('pageNumber', page.toString());
     myParams = myParams.set('itemsPerPage', items.toString());
     const options = { params: myParams };
     let url = this._url + '/old';
-    return this._http.get<Page<IExposition>>(url, options);
+    return this._http.get<IExposition[]>(url, options);
   }
 }

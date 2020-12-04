@@ -13,7 +13,7 @@ export class ExpositionsComponent implements OnInit {
 
   ngOnInit(): void {
     this._expoService.getAllCurrentExpos(0, 50).subscribe(
-      (resp) => (this.expositions = resp.content),
+      (resp) => (this.expositions = resp['content']),
       (err) => console.log(`An error occured retrieving expos ` + err)
     );
   }

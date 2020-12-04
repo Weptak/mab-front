@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IArtefact } from '../domain/iartefact';
-import { Page } from '../domain/page';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +12,11 @@ export class ArtefactService {
 
   constructor(private _http: HttpClient) {}
 
-  public getAllArtefacts(
-    page: number,
-    items: number
-  ): Observable<Page<IArtefact>> {
+  public getAllArtefacts(page: number, items: number): Observable<IArtefact[]> {
     let myParams = new HttpParams();
     myParams = myParams.set('pageNumber', page.toString());
     myParams = myParams.set('itemsPerPage', items.toString());
     const options = { params: myParams };
-    return this._http.get<Page<IArtefact>>(this._url, options);
+    return this._http.get<IArtefact[]>(this._url, options);
   }
 }

@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this._expoService.getAllCurrentExpos(0, 3).subscribe(
       (resp) => {
-        this.currentExpos = resp.content;
+        this.currentExpos = resp['content'];
       },
       (err) => console.log(`Error retrieving current expositions : ${err}`)
     );
