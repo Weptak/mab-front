@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IArtefact } from 'src/app/domain/iartefact';
+import { ICulture } from 'src/app/domain/iculture';
 import { ArtefactService } from 'src/app/services/artefact.service';
 import { CultureService } from 'src/app/services/culture.service';
 
@@ -15,10 +16,10 @@ export class ArtefactsFromCultureComponent implements OnInit {
   page: number = 1;
   pageSize: number = 10;
 
+  culture: ICulture;
   artefacts: IArtefact[] = [];
 
   constructor(
-    private _artefactService: ArtefactService,
     private _cultureService: CultureService,
     private _route: ActivatedRoute
   ) {}
@@ -41,6 +42,10 @@ export class ArtefactsFromCultureComponent implements OnInit {
   loadData(page: number, size: number): void {
     this._route.paramMap.subscribe((res) => {
       let id: number = +res.get('id');
+      this._cultureService.getCultureById(id).subscribe(
+        (re) => (this.culture = re),
+        (err) => console.log(`Error retrieving the culture : ` + err)
+      );
       this._cultureService
         .getArtefactsFromCultureId(id, page - 1, size)
         .subscribe(

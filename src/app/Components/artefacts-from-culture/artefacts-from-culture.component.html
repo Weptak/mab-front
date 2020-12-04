@@ -1,3 +1,22 @@
+<div class="card mb-3" style="max-width: 100%">
+  <div class="row no-gutters">
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ culture.name }}</h5>
+        <p class="card-text" style="white-space: pre-wrap">
+          {{ culture.description }}
+        </p>
+        <p class="card-text">
+          <small class="text-muted">{{ culture.periodDescription }}</small>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 text-center my-auto">
+      <img src="{{ culture.cultureMap }}" class="card-img" />
+    </div>
+  </div>
+</div>
+
 <div class="d-flex justify-content-end">
   <label class="pt-2" for="pageSize">Résultats par page : &nbsp;</label>
   <select
@@ -31,7 +50,9 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ item.name }}</h5>
-        <p class="card-text">{{ item.objectDescription }}</p>
+        <p class="card-text" style="white-space: pre-wrap">
+          {{ item.objectDescription }}
+        </p>
         <p class="card-text">
           <small class="text-muted">{{ item.culture.name }}</small>
           <small class="text-muted" *ngIf="item.culturalPhase != null">

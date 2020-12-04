@@ -17,6 +17,10 @@ export class CultureService {
     return this._http.get<ICulture[]>(this._url);
   }
 
+  public getCultureById(id: number): Observable<ICulture> {
+    return this._http.get<ICulture>(this._url + '/' + id);
+  }
+
   public getArtefactsFromCultureId(
     id: number,
     page: number,
