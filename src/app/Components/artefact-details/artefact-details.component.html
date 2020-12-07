@@ -1,0 +1,63 @@
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4 text-center my-2">
+      <img
+        *ngIf="artefact.imageURL != null"
+        src="{{ artefact.imageURL }}"
+        class="card-img rounded"
+      />
+      <img
+        *ngIf="artefact.imageURL == null"
+        src="/assets/images/noimgavailable.jpg"
+        class="card-img rounded"
+        style="max-width: 50%"
+      />
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <h5 class="card-title text-center">
+          {{ artefact.name }}
+        </h5>
+        <h6>Description :</h6>
+        <p class="card-text" style="white-space: pre-wrap">
+          {{ artefact.objectDescription }}
+        </p>
+        <h6>Culture</h6>
+        <div class="card-text">
+          <p>
+            {{ artefact.culture.name }}
+            <span *ngIf="artefact.culturalPhase"
+              >- {{ artefact.culturalPhase }}</span
+            >
+          </p>
+        </div>
+        <div class="card-text">
+          <h6>Datation</h6>
+          <p>
+            {{ artefact.startYear }} à {{ artefact.endYear }}
+            <small class="text-muted ml-3">{{
+              artefact.periodDescription
+            }}</small>
+          </p>
+        </div>
+        <div class="card-text">
+          <h6>Lieu d'exposition</h6>
+          <p
+            *ngIf="
+              artefact.onPermanentDisplay || artefact.inExposition;
+              else elseblock
+            "
+          >
+            {{ artefact.localisation }}
+          </p>
+          <ng-template #elseblock>Objet en réserve</ng-template>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 my-4">
+      <a class="btn btn-primary w-100 my-2" role="button">Editer</a>
+      <a class="btn btn-primary w-100 my-2" role="button">Déplacer</a>
+      <a class="btn btn-primary w-100 my-2" role="button">Exposer</a>
+    </div>
+  </div>
+</div>

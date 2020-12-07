@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AllArtefactsComponent } from './Components/all-artefacts/all-artefacts.component';
+import { ArtefactDetailsComponent } from './Components/artefact-details/artefact-details.component';
 import { ArtefactsFromCultureComponent } from './Components/artefacts-from-culture/artefacts-from-culture.component';
 import { CollectionsComponent } from './Components/collections/collections.component';
 import { ExpositionsComponent } from './Components/expositions/expositions.component';
@@ -18,6 +19,11 @@ const routes: Routes = [
     children: [
       { path: '', component: AllArtefactsComponent },
       { path: ':id', component: ArtefactsFromCultureComponent },
+      { path: 'details/:identification', component: ArtefactDetailsComponent },
+      {
+        path: ':id/details/:identification',
+        redirectTo: 'details/:identification',
+      },
     ],
   },
 ];

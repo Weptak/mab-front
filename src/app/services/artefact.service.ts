@@ -19,4 +19,8 @@ export class ArtefactService {
     const options = { params: myParams };
     return this._http.get<IArtefact[]>(this._url, options);
   }
+
+  public getArtefactDetails(id: string): Observable<IArtefact> {
+    return this._http.get<IArtefact>(this._url + '/' + id);
+  }
 }

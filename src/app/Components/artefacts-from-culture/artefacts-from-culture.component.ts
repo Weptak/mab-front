@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ICulture } from 'src/app/domain/iculture';
-import { ArtefactService } from 'src/app/services/artefact.service';
 import { CultureService } from 'src/app/services/culture.service';
 
 @Component({

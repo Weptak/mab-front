@@ -35,9 +35,13 @@
         style="max-width: 50%"
       />
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6">
       <div class="card-body">
-        <h5 class="card-title">{{ item.name }}</h5>
+        <h5 class="card-title">
+          <a [routerLink]="['details/', item.identification]">
+            {{ item.name }}
+          </a>
+        </h5>
         <p class="card-text" style="white-space: pre-wrap">
           {{ item.objectDescription }}
         </p>
@@ -51,6 +55,15 @@
           <small class="text-muted">{{ item.periodDescription }}</small>
         </p>
       </div>
+    </div>
+    <div class="col-md-2 mt-4">
+      <a
+        class="btn btn-primary"
+        [routerLink]="['details/', item.identification]"
+        routerLinkActive="router-link-active"
+        role="button"
+        >Voir détails</a
+      >
     </div>
   </div>
 </div>

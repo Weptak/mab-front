@@ -1,7 +1,7 @@
 import { ICulture } from './iculture';
 
 export interface IArtefact {
-  id: string;
+  identification: string;
   name: string;
   objectDescription: string;
   periodDescription: string;

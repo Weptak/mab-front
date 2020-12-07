@@ -13,6 +13,7 @@ import { AllArtefactsComponent } from './Components/all-artefacts/all-artefacts.
 import { ArtefactsFromCultureComponent } from './Components/artefacts-from-culture/artefacts-from-culture.component';
 import { ExpositionsComponent } from './Components/expositions/expositions.component';
 import { OldExpositionsComponent } from './Components/old-expositions/old-expositions.component';
+import { ArtefactDetailsComponent } from './Components/artefact-details/artefact-details.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { OldExpositionsComponent } from './Components/old-expositions/old-exposi
     ArtefactsFromCultureComponent,
     ExpositionsComponent,
     OldExpositionsComponent,
+    ArtefactDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
   providers: [],
