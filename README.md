@@ -1,28 +1,19 @@
-# MabFront
+# Musée Archéologique de Brüsel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+Ceci est le projet réalisé dans le cadre de ma formation de Développeur Java chez Business Training que j'ai suivi entre Juin et Décembre 2020.
 
-## Development server
+C'est un site internet développé avec Angular pour un musée fictif, avec gestion des collections et des expositions sauvegardées dans une base de données MySQL. Le lien entre front et back se fait au moyen d'endpoints Rest. Le projet gère également la sécurité avec trois niveau d'accès : visiteur, chercheur et conservateur.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+==============================================
 
-## Code scaffolding
+This is the project carried out as part of my Java Developer training at Business Training which I followed between June and December 2020.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It is a website developed in Angular for a fictitious museum, with management of collections and exhibitions saved in a MySQL database. The link between front and back is made by means of Rest endpoints. The project also manages security with three levels of access: visitor, researcher and curator.
 
-## Build
+=============================================
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Le Git de la partie back de ce projet se trouve ici :
 
-## Running unit tests
+The back-end Git is located here :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-"# mab-front" 
+https://github.com/Weptak/mab-back
