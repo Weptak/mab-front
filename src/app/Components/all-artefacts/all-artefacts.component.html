@@ -21,11 +21,18 @@
 </div>
 <div class="card mb-3" *ngFor="let item of artefacts">
   <div class="row no-gutters">
-    <div class="col-md-4 text-center my-auto">
+    <div class="col-md-4 text-center my-2">
       <img
+        *ngIf="item.imageURL != null"
         src="{{ item.imageURL }}"
         class="card-img rounded"
-        style="max-width: 75%"
+        style="max-width: 60%"
+      />
+      <img
+        *ngIf="item.imageURL == null"
+        src="/assets/images/noimgavailable.jpg"
+        class="card-img rounded"
+        style="max-width: 50%"
       />
     </div>
     <div class="col-md-8">
