@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3 mx-3">
   <div class="row">
-    <div class="col-2">
-      <div class="list-group">
+    <div class="col-md-2 mb-2">
+      <div class="list-group sticky-top sidepanel">
         <a
           class="list-group-item list-group-item-action active"
           [routerLink]="['/collections']"
@@ -23,7 +23,12 @@
         >
       </div>
     </div>
-    <div class="col-9">
+    <div class="sidebar"></div>
+    <div class="col-md-9">
+      <div class="d-flex justify-content-end mb-2">
+        <button class="btn btn-success mx-1">Ajouter Culture</button>
+        <button class="btn btn-success mx-2">Ajouter Artefact</button>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </div>

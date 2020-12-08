@@ -14,6 +14,7 @@ import { ArtefactsFromCultureComponent } from './Components/artefacts-from-cultu
 import { ExpositionsComponent } from './Components/expositions/expositions.component';
 import { OldExpositionsComponent } from './Components/old-expositions/old-expositions.component';
 import { ArtefactDetailsComponent } from './Components/artefact-details/artefact-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ArtefactDetailsComponent } from './Components/artefact-details/artefact
     OldExpositionsComponent,
     ArtefactDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
