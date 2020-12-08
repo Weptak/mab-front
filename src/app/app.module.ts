@@ -15,6 +15,8 @@ import { ExpositionsComponent } from './Components/expositions/expositions.compo
 import { OldExpositionsComponent } from './Components/old-expositions/old-expositions.component';
 import { ArtefactDetailsComponent } from './Components/artefact-details/artefact-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AddCultureComponent } from './Components/add-culture/add-culture.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,8 +30,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ExpositionsComponent,
     OldExpositionsComponent,
     ArtefactDetailsComponent,
+    AddCultureComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, HttpClientModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

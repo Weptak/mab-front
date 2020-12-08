@@ -1,0 +1,84 @@
+<div class="card offset-lg-2 col-lg-8 border-0">
+  <div class="card-header bg-primary text-white text-center">
+    <h4>Formulaire de Nouvelle Culture</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid form-group">
+      <form [formGroup]="form" (ngSubmit)="addCulture(form.value)">
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Nom de la culture :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="name"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Description :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="description"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Période :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="periodDescription"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Carte de la culture :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="cultureMap"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-lg-4 offset-lg-2">
+            <label class="col-form-label"> Année de début :</label>
+            <div>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="startYear"
+              />
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label class="col-form-label"> Année de fin :</label>
+            <div>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="endYear"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col text-center">
+          <button
+            class="btn btn-primary mx-2"
+            type="submit"
+            [disabled]="!form.valid"
+          >
+            Ajouter la culture
+          </button>
+          <button class="btn btn-warning mx-2" type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -35,4 +35,16 @@ export class CultureService {
       options
     );
   }
+
+  public addCulture(culture: ICulture): Observable<any> {
+    return this._http.post(this._url, culture);
+  }
+
+  public editCulture(culture: ICulture): Observable<any> {
+    return this._http.put(this._url, culture);
+  }
+
+  public deleteCulture(id: number): Observable<any> {
+    return this._http.delete(this._url + '/' + id);
+  }
 }

@@ -26,7 +26,9 @@
     <div class="sidebar"></div>
     <div class="col-md-9">
       <div class="d-flex justify-content-end mb-2">
-        <button class="btn btn-success mx-1">Ajouter Culture</button>
+        <button class="btn btn-success mx-1" [routerLink]="['/newCulture']">
+          Ajouter Culture
+        </button>
         <button class="btn btn-success mx-2">Ajouter Artefact</button>
       </div>
       <router-outlet></router-outlet>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddCultureComponent } from './Components/add-culture/add-culture.component';
 import { AllArtefactsComponent } from './Components/all-artefacts/all-artefacts.component';
 import { ArtefactDetailsComponent } from './Components/artefact-details/artefact-details.component';
 import { ArtefactsFromCultureComponent } from './Components/artefacts-from-culture/artefacts-from-culture.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'welcome' },
   { path: 'expos', component: ExpositionsComponent },
   { path: 'expos/old', component: OldExpositionsComponent },
+  { path: 'newCulture', component: AddCultureComponent },
   {
     path: 'collections',
     component: CollectionsComponent,
