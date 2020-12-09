@@ -37,7 +37,7 @@ export class AddCultureComponent implements OnInit {
 
   addCulture(culture: ICulture) {
     this._cultureService.addCulture(culture).subscribe((res) => {
-      console.log('Culture successfully added : ' + culture);
+      console.log('Culture successfully added : ' + culture.name);
       this._router.navigate(['/collections']);
     });
   }

@@ -1,0 +1,85 @@
+<div class="card offset-lg-2 col-lg-8 border-0">
+  <div class="card-header bg-primary text-white text-center">
+    <h4>Formulaire de Nouvelle Exposition</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid form-group">
+      <!-- Formulaire -->
+      <form [formGroup]="form" (ngSubmit)="addExpo(form.value)">
+        <!-- Titre -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label">
+            Titre de l'exposition :</label
+          >
+          <div class="col-lg-9">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="title"
+              required
+            />
+          </div>
+        </div>
+        <!-- Description -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Description :</label>
+          <div class="col-lg-9">
+            <textarea
+              class="form-control"
+              type="text"
+              formControlName="description"
+              rows="5"
+            ></textarea>
+          </div>
+        </div>
+        <!-- Dates -->
+        <div class="form-group row">
+          <!-- Date de début -->
+          <div class="col-lg-4 offset-lg-2">
+            <label class="col-form-label"> Date de début :</label>
+            <div>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="startDate"
+              />
+            </div>
+          </div>
+          <!-- Date de fin -->
+          <div class="col-lg-4">
+            <label class="col-form-label"> Date de fin :</label>
+            <div>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="endDate"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Affiche de l'exposition -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Affiche :</label>
+          <div class="col-lg-9">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="imageUrl"
+            />
+          </div>
+        </div>
+        <!-- Boutons -->
+        <div class="col text-center">
+          <button
+            class="btn btn-primary mx-2"
+            type="submit"
+            [disabled]="!form.valid"
+          >
+            Ajouter la culture
+          </button>
+          <button class="btn btn-warning mx-2" type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

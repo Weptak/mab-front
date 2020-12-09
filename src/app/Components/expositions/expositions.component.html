@@ -1,5 +1,11 @@
 <div class="d-flex justify-content-end my-2">
-  <button class="btn btn-warning">Nouvelle exposition</button>
+  <button
+    class="btn btn-warning"
+    [routerLink]="['/newExpo']"
+    routerLinkActive="router-link-active"
+  >
+    Nouvelle exposition
+  </button>
 </div>
 <ngb-accordion activeIds="ngb-panel-0" [closeOthers]="true">
   <ngb-panel title="{{ item.title }}" *ngFor="let item of expositions">

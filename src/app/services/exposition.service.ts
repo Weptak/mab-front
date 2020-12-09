@@ -30,4 +30,8 @@ export class ExpositionService {
     let url = this._url + '/old';
     return this._http.get<IExposition[]>(url, options);
   }
+
+  public addExpo(exposition: IExposition): Observable<any> {
+    return this._http.post(this._url, exposition);
+  }
 }
