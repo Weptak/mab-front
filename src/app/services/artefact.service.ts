@@ -23,4 +23,8 @@ export class ArtefactService {
   public getArtefactDetails(id: string): Observable<IArtefact> {
     return this._http.get<IArtefact>(this._url + '/' + id);
   }
+
+  public addArtefact(artefact: IArtefact): Observable<any> {
+    return this._http.post(this._url, artefact);
+  }
 }

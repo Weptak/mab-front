@@ -17,6 +17,8 @@ import { ArtefactDetailsComponent } from './Components/artefact-details/artefact
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddCultureComponent } from './Components/add-culture/add-culture.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddArtefactComponent } from './Components/add-artefact/add-artefact.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OldExpositionsComponent,
     ArtefactDetailsComponent,
     AddCultureComponent,
+    AddArtefactComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
