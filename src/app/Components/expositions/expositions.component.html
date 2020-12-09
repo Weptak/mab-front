@@ -1,3 +1,4 @@
+<!-- Bouton pour le niveau Conservateur -->
 <div class="d-flex justify-content-end my-2">
   <button
     class="btn btn-warning"
@@ -7,6 +8,7 @@
     Nouvelle exposition
   </button>
 </div>
+<!-- Les expositions -->
 <ngb-accordion activeIds="ngb-panel-0" [closeOthers]="true">
   <ngb-panel title="{{ item.title }}" *ngFor="let item of expositions">
     <ng-template ngbPanelContent>
@@ -34,6 +36,12 @@
                   role="button"
                   >Réserver des billets</a
                 >
+              </div>
+              <!-- Boutons pour le niveau Conservateur -->
+              <div class="card-footer row">
+                <button class="btn btn-warning mx-1">
+                  Modifier l'exposition
+                </button>
                 <button class="btn btn-warning mx-1">
                   Clôturer l'exposition
                 </button>
