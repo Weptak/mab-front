@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ArtefactService } from 'src/app/services/artefact.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-artefact-details',
@@ -15,6 +16,7 @@ export class ArtefactDetailsComponent implements OnInit {
   constructor(
     private _artefactService: ArtefactService,
     private _route: ActivatedRoute,
+    private _location: Location,
     private _router: Router
   ) {}
 
@@ -25,5 +27,9 @@ export class ArtefactDetailsComponent implements OnInit {
         .getArtefactDetails(this.identification)
         .subscribe((resp) => (this.artefact = resp));
     });
+  }
+
+  back() {
+    this._location.back();
   }
 }
