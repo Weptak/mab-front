@@ -31,7 +31,31 @@ export class ExpositionService {
     return this._http.get<IExposition[]>(url, options);
   }
 
+  public getExpoById(id: number): Observable<IExposition> {
+    return this._http.get<IExposition>(this._url + '/' + id);
+  }
+
   public addExpo(exposition: IExposition): Observable<any> {
     return this._http.post(this._url, exposition);
+  }
+
+  public editExpo(exposition: IExposition): Observable<any> {
+    return this._http.put(this._url, exposition);
+  }
+
+  public addVisitor(id: number, number: number): Observable<any> {
+    return this._http.patch(this._url + '/' + id, number);
+  }
+
+  public addArtefacts(id: number, items: string[]): Observable<any> {
+    return this._http.patch(this._url + '/' + id + '/addArtefacts', items);
+  }
+
+  public deleteExpo(id: number): Observable<any> {
+    return this._http.delete(this._url + '/' + id);
+  }
+
+  public endExpo(id: number): Observable<any> {
+    return this._http.patch(this._url + '/' + id + '/endexpo', null);
   }
 }

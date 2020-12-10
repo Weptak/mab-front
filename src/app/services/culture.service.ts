@@ -47,4 +47,15 @@ export class CultureService {
   public deleteCulture(id: number): Observable<any> {
     return this._http.delete(this._url + '/' + id);
   }
+
+  public getCultureBetweenDates(
+    startDate: number,
+    endDate: number
+  ): Observable<ICulture[]> {
+    let myParams = new HttpParams();
+    myParams = myParams.set('starDate', startDate.toString());
+    myParams = myParams.set('endDate', endDate.toString());
+    const options = { params: myParams };
+    return this._http.get<ICulture[]>(this._url + '/dates', options);
+  }
 }

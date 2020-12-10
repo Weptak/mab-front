@@ -27,4 +27,26 @@ export class ArtefactService {
   public addArtefact(artefact: IArtefact): Observable<any> {
     return this._http.post(this._url, artefact);
   }
+
+  public editArtefact(artefact: IArtefact): Observable<any> {
+    return this._http.put(this._url, artefact);
+  }
+
+  public changeLocation(id: number, room: string): Observable<any> {
+    let myParams = new HttpParams();
+    myParams = myParams.set('room', room);
+    const options = { params: myParams };
+    return this._http.patch(this._url + '/' + id, options);
+  }
+
+  public search(criteria: string): Observable<IArtefact[]> {
+    let myParams = new HttpParams();
+    myParams = myParams.set('criteria', criteria);
+    const options = { params: myParams };
+    return this._http.get<IArtefact[]>(this._url + '/search', options);
+  }
+
+  public deleteArtefact(id: number): Observable<any> {
+    return this._http.delete(this._url + '/' + id);
+  }
 }
