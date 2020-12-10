@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddArtefactComponent } from './Components/add-artefact/add-artefact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddExpositionComponent } from './Components/add-exposition/add-exposition.component';
+import { EditArtefactComponent } from './Components/edit-artefact/edit-artefact.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AddExpositionComponent } from './Components/add-exposition/add-expositi
     AddCultureComponent,
     AddArtefactComponent,
     AddExpositionComponent,
+    EditArtefactComponent,
   ],
   imports: [
     BrowserModule,

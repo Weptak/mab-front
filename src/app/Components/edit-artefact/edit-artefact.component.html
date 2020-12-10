@@ -1,0 +1,178 @@
+<div class="card offset-lg-2 col-lg-8 border-0">
+  <div class="card-header bg-primary text-white text-center">
+    <h4>Modifier l'artefact</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid form-group mb-5">
+      <form [formGroup]="form" (ngSubmit)="editArtefact(form.value)">
+        <!-- Identification -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Identifiant :</label>
+          <div class="col-lg-6">
+            <label> {{ artefact.identification }}</label>
+          </div>
+        </div>
+        <!-- Name -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Nom de l'objet :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="name"
+              placeholder="{{ artefact.name }}"
+            />
+          </div>
+        </div>
+        <!-- Description -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Description :</label>
+          <div class="col-lg-6">
+            <textarea
+              class="form-control"
+              type="text"
+              formControlName="objectDescription"
+              rows="5"
+              placeholder="{{ artefact.objectDescription }}"
+            ></textarea>
+          </div>
+        </div>
+        <!-- Datation -->
+        <div class="form-group row">
+          <div class="col-lg-4 offset-lg-2">
+            <label class="col-form-label"> Année de début :</label>
+            <div>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="startYear"
+                placeholder="{{ artefact.startYear }}"
+              />
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label class="col-form-label"> Année de fin :</label>
+            <div>
+              <input
+                class="form-control"
+                type="number"
+                formControlName="endYear"
+                placeholder="{{ artefact.endYear }}"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Description de la période -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Période :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="periodDescription"
+              placeholder="{{ artefact.periodDescription }}"
+            />
+          </div>
+        </div>
+        <!-- Culture -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Culture :</label>
+          <div class="col-lg-6">
+            <select
+              class="form-control"
+              formControlName="culture"
+              [ngModel]="artefact.culture"
+            >
+              <option [ngValue]="artefact.culture">
+                {{ artefact.culture.name }}
+              </option>
+              <option *ngFor="let item of cultures" [ngValue]="item">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- Phase culturelle -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Phase culturelle :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="culturalPhase"
+              placeholder="{{ artefact.culturalPhase }}"
+            />
+          </div>
+        </div>
+        <!-- Type -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Type :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="type"
+              placeholder="{{ artefact.type }}"
+            />
+          </div>
+        </div>
+        <!-- Material -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Matériaux :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="material"
+              placeholder="{{ artefact.material }}"
+            />
+          </div>
+        </div>
+        <!-- Image -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Url de l'Image :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="imageURL"
+              placeholder="{{ artefact.imageURL }}"
+            />
+          </div>
+        </div>
+
+        <!-- Localisation -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Localisation :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="localisation"
+              placeholder="{{ artefact.localisation }}"
+            />
+          </div>
+        </div>
+        <!-- Date of Entry -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Date d'entrée :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="date"
+              formControlName="dateOfEntry"
+              placeholder="{{ artefact.dateOfEntry }}"
+            />
+          </div>
+        </div>
+        <!-- buttons -->
+        <div class="col text-center">
+          <button class="btn btn-primary mx-2" type="submit">
+            Modifier l'artefact
+          </button>
+          <button class="btn btn-warning mx-2" type="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
