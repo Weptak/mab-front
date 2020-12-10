@@ -79,4 +79,10 @@ export class EditArtefactComponent implements OnInit {
       ]);
     });
   }
+
+  public back() {
+    this._router.navigate([
+      '/collections/details/' + this.artefact.identification,
+    ]);
+  }
 }
