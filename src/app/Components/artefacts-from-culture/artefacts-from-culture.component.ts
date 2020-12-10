@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ICulture } from 'src/app/domain/iculture';
 import { CultureService } from 'src/app/services/culture.service';
@@ -20,11 +21,39 @@ export class ArtefactsFromCultureComponent implements OnInit {
 
   constructor(
     private _cultureService: CultureService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _modalService: NgbModal,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadData(1, this.pageSize); //Initial page load
+  }
+
+  open(supprimer) {
+    this._modalService
+      .open(supprimer, { centered: true })
+      .result.then((result) => {
+        this.modalResult(result);
+      });
+  }
+
+  private modalResult(result: any) {
+    if (result === 'yes') {
+      this.deleteCulture(this.culture.id);
+    }
+  }
+
+  deleteCulture(id: number) {
+    this._cultureService.deleteCulture(id).subscribe(
+      (resp) => {
+        console.log('Culture ' + this.culture.name + ' has been deleted');
+        this._router.navigate(['/collections']).then(() => {
+          window.location.reload();
+        });
+      },
+      (err) => console.log('Error deleting culture : ' + this.culture.name)
+    );
   }
 
   // Event handler for page change

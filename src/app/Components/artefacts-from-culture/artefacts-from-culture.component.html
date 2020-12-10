@@ -10,16 +10,56 @@
           <small class="text-muted">{{ culture.periodDescription }}</small>
         </p>
       </div>
+      <!-- Boutons pour Chercheurs -->
       <div class="card-body">
         <button
-          class="btn btn-success"
+          class="btn btn-success mx-1"
           [routerLink]="['editCulture']"
           routerLinkActive="router-link-active"
         >
           Modifier la culture
         </button>
+        <button class="btn btn-success mx-1" (click)="open(supprimer)">
+          Supprimer la culture
+        </button>
       </div>
     </div>
+    <!-- Modal -->
+    <ng-template #supprimer let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Supprimer la culture</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Êtes vous sûr de vouloir supprimer la culture {{ culture.name }} ?
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('yes')"
+        >
+          Oui
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.dismiss()"
+        >
+          Annuler
+        </button>
+      </div>
+    </ng-template>
+    <!-- Carte -->
     <div class="col-md-4 text-center my-auto p-2">
       <img src="{{ culture.cultureMap }}" class="card-img" />
     </div>
