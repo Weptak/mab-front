@@ -46,7 +46,7 @@ export class ArtefactService {
     return this._http.get<IArtefact[]>(this._url + '/search', options);
   }
 
-  public deleteArtefact(id: number): Observable<any> {
+  public deleteArtefact(id: string): Observable<any> {
     return this._http.delete(this._url + '/' + id);
   }
 }

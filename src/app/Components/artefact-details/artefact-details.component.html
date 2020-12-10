@@ -86,6 +86,7 @@
             Déplacer
           </button>
         </div>
+
         <!-- Bouton pour le conservateur -->
         <div placement="bottom" ngbTooltip="L'objet est dans une exposition !">
           <button class="btn btn-warning w-100 my-2" role="button" disabled>
@@ -96,6 +97,45 @@
       <ng-template #NotInExpo>
         <!-- Bouton pour Chercheur -->
         <a class="btn btn-success w-100 my-2" role="button">Déplacer</a>
+        <button
+          class="btn btn-success w-100 my-2"
+          (click)="open(supprimerArtefact)"
+        >
+          Supprimer
+        </button>
+        <!-- Modal -->
+        <ng-template #supprimerArtefact let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title">Supprimer l'artefact</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Êtes vous sûr de vouloir supprimer {{ artefact.name }} ?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('deleteArtefact')"
+            >
+              Oui
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.dismiss()"
+            >
+              Annuler
+            </button>
+          </div>
+        </ng-template>
         <!-- Bouton pour Conservateur -->
         <a class="btn btn-warning w-100 my-2" role="button">Exposer</a>
       </ng-template>

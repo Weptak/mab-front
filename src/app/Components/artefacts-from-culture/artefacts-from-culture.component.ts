@@ -44,7 +44,7 @@ export class ArtefactsFromCultureComponent implements OnInit {
     }
   }
 
-  deleteCulture(id: number) {
+  private deleteCulture(id: number) {
     this._cultureService.deleteCulture(id).subscribe(
       (resp) => {
         console.log('Culture ' + this.culture.name + ' has been deleted');
