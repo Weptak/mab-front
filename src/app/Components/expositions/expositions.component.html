@@ -41,7 +41,11 @@
                 </div>
                 <!-- Boutons pour le niveau Conservateur -->
                 <div class="row">
-                  <button class="btn btn-warning m-1">
+                  <button
+                    class="btn btn-warning m-1"
+                    [routerLink]="['/expos/edit', item.id]"
+                    routerLinkActive="router-link-active"
+                  >
                     Modifier l'exposition
                   </button>
                   <button class="btn btn-warning m-1">
@@ -55,6 +59,8 @@
             </div>
           </div>
         </div>
+        <!-- Clôture Modal -->
+        <!-- Delete Modal -->
         <!-- Ticket Modal -->
         <ng-template #ticketModal let-modal>
           <div class="modal-header">

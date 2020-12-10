@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddExpositionComponent } from './Components/add-exposition/add-exposition.component';
 import { EditArtefactComponent } from './Components/edit-artefact/edit-artefact.component';
 import { EditCultureComponent } from './Components/edit-culture/edit-culture.component';
+import { EditExpositionComponent } from './Components/edit-exposition/edit-exposition.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EditCultureComponent } from './Components/edit-culture/edit-culture.com
     AddExpositionComponent,
     EditArtefactComponent,
     EditCultureComponent,
+    EditExpositionComponent,
   ],
   imports: [
     BrowserModule,

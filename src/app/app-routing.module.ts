@@ -9,6 +9,7 @@ import { ArtefactsFromCultureComponent } from './Components/artefacts-from-cultu
 import { CollectionsComponent } from './Components/collections/collections.component';
 import { EditArtefactComponent } from './Components/edit-artefact/edit-artefact.component';
 import { EditCultureComponent } from './Components/edit-culture/edit-culture.component';
+import { EditExpositionComponent } from './Components/edit-exposition/edit-exposition.component';
 import { ExpositionsComponent } from './Components/expositions/expositions.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { OldExpositionsComponent } from './Components/old-expositions/old-expositions.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'welcome' },
   { path: 'expos', component: ExpositionsComponent },
   { path: 'expos/old', component: OldExpositionsComponent },
+  { path: 'expos/edit/:id', component: EditExpositionComponent },
   { path: 'newCulture', component: AddCultureComponent },
   { path: 'newArtefact', component: AddArtefactComponent },
   { path: 'newExpo', component: AddExpositionComponent },

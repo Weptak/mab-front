@@ -1,0 +1,94 @@
+<div class="card offset-lg-2 col-lg-8 border-0">
+  <div class="card-header bg-primary text-white text-center">
+    <h4>Modifier la culture</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid form-group mb-5">
+      <form [formGroup]="form" (ngSubmit)="editExposition(form.value)">
+        <!-- Title -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label">
+            Titre de l'exposition :</label
+          >
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="{{ exposition.title }}"
+              formControlName="title"
+            />
+          </div>
+        </div>
+        <!-- Description -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Description :</label>
+          <div class="col-lg-6">
+            <textarea
+              class="form-control"
+              type="text"
+              formControlName="description"
+              rows="10"
+              placeholder="{{ exposition.description }}"
+            ></textarea>
+          </div>
+        </div>
+        <!-- Dates -->
+        <div class="form-group row">
+          <div class="col-lg-4 offset-lg-2">
+            <label class="col-form-label"> Date de début :</label>
+            <div>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="startDate"
+                placeholder="{{ exposition.startDate }}"
+              />
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label class="col-form-label"> Date de fin :</label>
+            <div>
+              <input
+                class="form-control"
+                type="date"
+                formControlName="endDate"
+                placeholder="{{ exposition.endDate }}"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Image -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Url de l'affiche :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="text"
+              formControlName="imageUrl"
+              placeholder="{{ exposition.imageUrl }}"
+            />
+          </div>
+        </div>
+        <!-- VisitorCount -->
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label"> Nombre de visiteurs :</label>
+          <div class="col-lg-6">
+            <input
+              class="form-control"
+              type="number"
+              formControlName="visitorCount"
+              placeholder="{{ exposition.visitorCount }}"
+            />
+          </div>
+        </div>
+
+        <div class="col text-center">
+          <button class="btn btn-primary mx-2" type="submit">
+            Modifier la culture
+          </button>
+          <button class="btn btn-warning mx-2" (click)="back()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
