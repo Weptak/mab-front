@@ -83,6 +83,7 @@
               class="form-control"
               placeholder="Choisir une culture"
               formControlName="culture"
+              required
             >
               <option *ngFor="let item of cultures" [ngValue]="item">
                 {{ item.name }}

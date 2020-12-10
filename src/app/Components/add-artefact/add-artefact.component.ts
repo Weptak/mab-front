@@ -45,10 +45,10 @@ export class AddArtefactComponent implements OnInit {
       imageURL: new FormControl(''),
       onPermanentDisplay: new FormControl(false),
       inExposition: new FormControl(false),
-      dateOfEntry: new FormControl(Validators.required),
+      dateOfEntry: new FormControl('', Validators.required),
       startYear: new FormControl(Validators.pattern('^[-+]?d*$')),
       endYear: new FormControl(Validators.pattern('^[-+]?d*$')),
-      culture: new FormControl(),
+      culture: new FormControl('', Validators.required),
     });
   }
 
