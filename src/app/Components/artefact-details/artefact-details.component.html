@@ -197,7 +197,11 @@
     </div>
   </div>
   <div class="card-footer text-muted">
-    <button class="btn" (click)="back()">
+    <button
+      class="btn"
+      [routerLink]="['/collections']"
+      routerLinkActive="router-link-active"
+    >
       <i class="fa fa-angle-double-left"></i> Retour
     </button>
   </div>

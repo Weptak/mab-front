@@ -18,7 +18,6 @@ export class ArtefactDetailsComponent implements OnInit {
   constructor(
     private _artefactService: ArtefactService,
     private _route: ActivatedRoute,
-    private _location: Location,
     private _modalService: NgbModal,
     private _router: Router
   ) {}
@@ -30,10 +29,6 @@ export class ArtefactDetailsComponent implements OnInit {
         .getArtefactDetails(this.identification)
         .subscribe((resp) => (this.artefact = resp));
     });
-  }
-
-  back() {
-    this._location.back();
   }
 
   open(modal) {
