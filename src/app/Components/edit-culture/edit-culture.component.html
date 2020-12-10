@@ -1,0 +1,102 @@
+<div class="card offset-lg-2 col-lg-8 border-0">
+  <div class="card-header bg-primary text-white text-center">
+    <h4>Modifier la culture</h4>
+  </div>
+  <div class="card-body">
+    <div class="container-fluid form-group mb-5">
+      <!-- Name -->
+      <div class="form-group row">
+        <label class="col-lg-3 col-form-label"> Nom de la culture :</label>
+        <div class="col-lg-6">
+          <input
+            class="form-control"
+            id="name"
+            type="text"
+            [(ngModel)]="culture.name"
+            required
+            (change)="check()"
+          />
+          <label *ngIf="!isValid" class="text-danger">
+            Un nom est obligatoire</label
+          >
+        </div>
+      </div>
+      <!-- Description -->
+      <div class="form-group row">
+        <label class="col-lg-3 col-form-label"> Description :</label>
+        <div class="col-lg-6">
+          <textarea
+            class="form-control"
+            type="text"
+            rows="5"
+            [(ngModel)]="culture.description"
+          ></textarea>
+        </div>
+      </div>
+      <!-- Period Description -->
+      <div class="form-group row">
+        <label class="col-lg-3 col-form-label"> Période :</label>
+        <div class="col-lg-6">
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="culture.periodDescription"
+          />
+        </div>
+      </div>
+      <!-- Culture Map -->
+      <div class="form-group row">
+        <label class="col-lg-3 col-form-label"> Url de la carte :</label>
+        <div class="col-lg-6">
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="culture.cultureMap"
+          />
+        </div>
+      </div>
+      <!-- Datation -->
+      <div class="form-group row">
+        <div class="col-lg-4 offset-lg-2">
+          <label class="col-form-label"> Année de début :</label>
+          <div>
+            <input
+              class="form-control"
+              type="number"
+              [(ngModel)]="culture.startYear"
+            />
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <label class="col-form-label"> Année de fin :</label>
+          <div>
+            <input
+              class="form-control"
+              type="number"
+              [(ngModel)]="culture.endYear"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- buttons -->
+      <div class="col text-center">
+        <button
+          *ngIf="isValid; else elseButton"
+          class="btn btn-primary mx-2"
+          type="submit"
+          (click)="editCulture(culture)"
+        >
+          Modifier l'artefact
+        </button>
+        <ng-template #elseButton>
+          <button class="btn btn-primary mx-2" disabled>
+            Modifier l'artefact
+          </button>
+        </ng-template>
+        <button class="btn btn-warning mx-2" type="reset" (click)="back()">
+          Annuler
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

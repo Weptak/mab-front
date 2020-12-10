@@ -11,7 +11,13 @@
         </p>
       </div>
       <div class="card-body">
-        <button class="btn btn-success">Modifier la culture</button>
+        <button
+          class="btn btn-success"
+          [routerLink]="['editCulture']"
+          routerLinkActive="router-link-active"
+        >
+          Modifier la culture
+        </button>
       </div>
     </div>
     <div class="col-md-4 text-center my-auto p-2">

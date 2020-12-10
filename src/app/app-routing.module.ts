@@ -8,6 +8,7 @@ import { ArtefactDetailsComponent } from './Components/artefact-details/artefact
 import { ArtefactsFromCultureComponent } from './Components/artefacts-from-culture/artefacts-from-culture.component';
 import { CollectionsComponent } from './Components/collections/collections.component';
 import { EditArtefactComponent } from './Components/edit-artefact/edit-artefact.component';
+import { EditCultureComponent } from './Components/edit-culture/edit-culture.component';
 import { ExpositionsComponent } from './Components/expositions/expositions.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { OldExpositionsComponent } from './Components/old-expositions/old-expositions.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
     children: [
       { path: '', component: AllArtefactsComponent },
       { path: ':id', component: ArtefactsFromCultureComponent },
+      { path: ':id/editCulture', component: EditCultureComponent },
       { path: 'details/:identification', component: ArtefactDetailsComponent },
       {
         path: ':id/details/:identification',
