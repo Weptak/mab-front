@@ -34,7 +34,7 @@
                     name="ticketButton"
                     id="tickets"
                     class="btn btn-primary mx-1"
-                    href=""
+                    (click)="open(ticketModal, item)"
                     role="button"
                     >Réserver des billets</a
                   >
@@ -55,6 +55,49 @@
             </div>
           </div>
         </div>
+        <!-- Ticket Modal -->
+        <ng-template #ticketModal let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title">Réserver des billets</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.close()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form [formGroup]="form" (ngSubmit)="modal.close('addVisitors')">
+            <div class="modal-body">
+              <h5>{{ exposition.title }}</h5>
+
+              <p>Nombre de billets :</p>
+              <small class="text-muted"
+                >Entre 1 et 99 billets par réservation</small
+              >
+              <div>
+                <input type="number" formControlName="visitorsToAdd" />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="!form.valid"
+              >
+                Réserver
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                (click)="modal.close()"
+              >
+                Annuler
+              </button>
+            </div>
+          </form>
+        </ng-template>
       </ng-template>
     </ngb-panel>
   </ngb-accordion>
