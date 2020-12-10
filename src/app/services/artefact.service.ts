@@ -32,11 +32,11 @@ export class ArtefactService {
     return this._http.put(this._url, artefact);
   }
 
-  public changeLocation(id: number, room: string): Observable<any> {
+  public changeLocation(id: string, room: string): Observable<any> {
     let myParams = new HttpParams();
     myParams = myParams.set('room', room);
     const options = { params: myParams };
-    return this._http.patch(this._url + '/' + id, options);
+    return this._http.patch(this._url + '/' + id, null, options);
   }
 
   public search(criteria: string): Observable<IArtefact[]> {

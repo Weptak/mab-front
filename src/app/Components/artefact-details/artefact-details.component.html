@@ -96,14 +96,20 @@
       </div>
       <ng-template #NotInExpo>
         <!-- Bouton pour Chercheur -->
-        <a class="btn btn-success w-100 my-2" role="button">Déplacer</a>
+        <a
+          class="btn btn-success w-100 my-2"
+          role="button"
+          (click)="open(moveArtefact)"
+          >Déplacer</a
+        >
         <button
           class="btn btn-success w-100 my-2"
           (click)="open(supprimerArtefact)"
         >
           Supprimer
         </button>
-        <!-- Modal -->
+        <!-- Modals -->
+        <!-- delete artefact modal -->
         <ng-template #supprimerArtefact let-modal>
           <div class="modal-header">
             <h4 class="modal-title">Supprimer l'artefact</h4>
@@ -127,6 +133,55 @@
             >
               Oui
             </button>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.dismiss()"
+            >
+              Annuler
+            </button>
+          </div>
+        </ng-template>
+        <!-- Move artefact modal -->
+        <ng-template #moveArtefact let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title">Déplacer l'artefact</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Pour envoyer dans les réserves :
+              <span class="d-flex justify-content-center m-1">
+                <button
+                  class="btn btn-primary"
+                  (click)="modal.close('moveToReserves')"
+                >
+                  Envoyer en réserves
+                </button></span
+              >
+            </p>
+            <p>
+              Déplacer l'artefact vers une salle : <input [(ngModel)]="room" />
+
+              <span class="d-flex justify-content-center m-1"
+                ><button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="modal.close('moveArtefact')"
+                >
+                  Déplacer
+                </button></span
+              >
+            </p>
+          </div>
+          <div class="modal-footer">
             <button
               type="button"
               class="btn btn-outline-dark"

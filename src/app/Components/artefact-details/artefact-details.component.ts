@@ -13,6 +13,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ArtefactDetailsComponent implements OnInit {
   artefact: IArtefact;
   identification: string;
+  room: string = null;
 
   constructor(
     private _artefactService: ArtefactService,
@@ -35,17 +36,26 @@ export class ArtefactDetailsComponent implements OnInit {
     this._location.back();
   }
 
-  open(supprimerArtefact) {
-    this._modalService
-      .open(supprimerArtefact, { centered: true })
-      .result.then((result) => {
-        this.modalResult(result);
-      });
+  open(modal) {
+    this._modalService.open(modal, { centered: true }).result.then((result) => {
+      this.modalResult(result);
+    });
   }
 
   private modalResult(result: any) {
-    if (result === 'deleteArtefact') {
-      this.deleteArtefact(this.artefact.identification);
+    switch (result) {
+      case 'deleteArtefact': {
+        this.deleteArtefact(this.artefact.identification);
+        break;
+      }
+      case 'moveArtefact': {
+        this.moveArtefact(this.room);
+        break;
+      }
+      case 'moveToReserves': {
+        this.moveArtefact('reserves');
+        break;
+      }
     }
   }
 
@@ -59,5 +69,17 @@ export class ArtefactDetailsComponent implements OnInit {
       },
       (err) => console.log('Error deleting artefact : ' + this.artefact.name)
     );
+  }
+
+  private moveArtefact(room: string) {
+    this._artefactService
+      .changeLocation(this.artefact.identification, room)
+      .subscribe(
+        (resp) => {
+          console.log(this.artefact.name + ' moved to ' + room);
+          window.location.reload();
+        },
+        (err) => console.log('Error moving artefact to ' + room)
+      );
   }
 }
