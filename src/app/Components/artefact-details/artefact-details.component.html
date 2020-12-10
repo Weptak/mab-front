@@ -56,22 +56,32 @@
     </div>
     <!-- Boutons pour Chercheurs -->
     <div class="col-md-2 my-4 px-2">
-      <button class="btn btn-success w-100 my-2" role="button">Editer</button>
+      <button
+        class="btn btn-success w-100 my-2"
+        role="button"
+        [routerLink]="['editArtefact']"
+        routerLinkActive="router-link-active"
+      >
+        Editer
+      </button>
       <div *ngIf="artefact.inExposition; else NotInExpo">
         <div placement="top" ngbTooltip="L'objet est dans une exposition !">
           <button class="btn btn-success w-100 my-2" role="button" disabled>
             Déplacer
           </button>
         </div>
+        <!-- Bouton pour le conservateur -->
         <div placement="bottom" ngbTooltip="L'objet est dans une exposition !">
-          <button class="btn btn-success w-100 my-2" role="button" disabled>
+          <button class="btn btn-warning w-100 my-2" role="button" disabled>
             Exposer
           </button>
         </div>
       </div>
       <ng-template #NotInExpo>
+        <!-- Bouton pour Chercheur -->
         <a class="btn btn-success w-100 my-2" role="button">Déplacer</a>
-        <a class="btn btn-success w-100 my-2" role="button">Exposer</a>
+        <!-- Bouton pour Conservateur -->
+        <a class="btn btn-warning w-100 my-2" role="button">Exposer</a>
       </ng-template>
     </div>
   </div>
