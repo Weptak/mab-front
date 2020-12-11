@@ -15,18 +15,18 @@
       <ng-template ngbPanelContent>
         <div class="card mb-3">
           <div class="row no-gutters">
-            <div class="col-md-4">
+            <div class="col-lg-4">
               <img src="{{ item.imageUrl }}" class="card-img" />
             </div>
-            <div class="col-md-8">
+            <div class="col-lg-8">
               <div class="card-body">
                 <h5 class="card-title">Présentation</h5>
                 <p class="card-text" style="white-space: pre-wrap">
                   {{ item.description }}
                 </p>
                 <div class="card-footer row">
-                  <h5 class="card-title col-lg-2">Dates</h5>
-                  <p class="card-text col-lg-6">
+                  <h5 class="card-title col-xl-2">Dates</h5>
+                  <p class="card-text col-xl-6">
                     du {{ item.startDate | date: "dd/MM/yyyy" }} au
                     {{ item.endDate | date: "dd/MM/yyyy" }}
                   </p>
@@ -48,10 +48,16 @@
                   >
                     Modifier l'exposition
                   </button>
-                  <button class="btn btn-warning m-1">
+                  <button
+                    class="btn btn-warning m-1"
+                    (click)="open(endModal, item)"
+                  >
                     Clôturer l'exposition
                   </button>
-                  <button class="btn btn-warning m-1">
+                  <button
+                    class="btn btn-warning m-1"
+                    (click)="open(deleteModal, item)"
+                  >
                     Supprimer l'exposition
                   </button>
                 </div>
@@ -60,7 +66,77 @@
           </div>
         </div>
         <!-- Clôture Modal -->
+        <ng-template #endModal let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title">Clôturer l'exposition</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.close()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Êtes vous sûr de vouloir clôturer l'exposition
+              {{ exposition.title }} ?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('closeExpo')"
+            >
+              Oui
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close()"
+            >
+              Annuler
+            </button>
+          </div>
+        </ng-template>
         <!-- Delete Modal -->
+        <ng-template #deleteModal let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title">Supprimer l'exposition</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.close()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Êtes vous sûr de vouloir supprimer l'exposition
+              {{ exposition.title }} ?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('deleteExpo')"
+            >
+              Oui
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close()"
+            >
+              Annuler
+            </button>
+          </div>
+        </ng-template>
         <!-- Ticket Modal -->
         <ng-template #ticketModal let-modal>
           <div class="modal-header">
@@ -104,6 +180,7 @@
             </div>
           </form>
         </ng-template>
+        <!-- end of Modals -->
       </ng-template>
     </ngb-panel>
   </ngb-accordion>

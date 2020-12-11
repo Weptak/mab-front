@@ -48,6 +48,19 @@ export class ExpositionsComponent implements OnInit {
     switch (result) {
       case 'addVisitors': {
         this.addVisitors();
+        console.log(
+          'call to add visitors to exposition ' + this.exposition.title
+        );
+        break;
+      }
+      case 'closeExpo': {
+        this.closeExposition();
+        console.log('call to close exposition ' + this.exposition.title);
+        break;
+      }
+      case 'deleteExpo': {
+        this.deleteExpo();
+        console.log('call to delete exposition ' + this.exposition.title);
         break;
       }
     }
@@ -62,5 +75,30 @@ export class ExpositionsComponent implements OnInit {
           visitorsToAdd + ' visitors added to expo ' + this.exposition.title
         );
       });
+  }
+
+  private closeExposition() {
+    this._expoService.endExpo(this.exposition.id).subscribe(
+      (resp) =>
+        console.log(
+          'The exposition ' + this.exposition.title + ' has been closed'
+        ),
+      (err) =>
+        console.log('Error closing the exposition ' + this.exposition.title)
+    );
+  }
+
+  private deleteExpo() {
+    this.closeExposition();
+    this._expoService.deleteExpo(this.exposition.id).subscribe(
+      (resp) => {
+        console.log(
+          'The exposition ' + this.exposition.title + ' has been deleted'
+        );
+        this.ngOnInit();
+      },
+      (err) =>
+        console.log('Error deleting the exposition ' + this.exposition.title)
+    );
   }
 }
