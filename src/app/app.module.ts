@@ -23,6 +23,7 @@ import { AddExpositionComponent } from './Components/add-exposition/add-expositi
 import { EditArtefactComponent } from './Components/edit-artefact/edit-artefact.component';
 import { EditCultureComponent } from './Components/edit-culture/edit-culture.component';
 import { EditExpositionComponent } from './Components/edit-exposition/edit-exposition.component';
+import { BasketComponent } from './Components/basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditExpositionComponent } from './Components/edit-exposition/edit-expos
     EditArtefactComponent,
     EditCultureComponent,
     EditExpositionComponent,
+    BasketComponent,
   ],
   imports: [
     BrowserModule,

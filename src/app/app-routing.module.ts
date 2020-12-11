@@ -6,6 +6,7 @@ import { AddExpositionComponent } from './Components/add-exposition/add-expositi
 import { AllArtefactsComponent } from './Components/all-artefacts/all-artefacts.component';
 import { ArtefactDetailsComponent } from './Components/artefact-details/artefact-details.component';
 import { ArtefactsFromCultureComponent } from './Components/artefacts-from-culture/artefacts-from-culture.component';
+import { BasketComponent } from './Components/basket/basket.component';
 import { CollectionsComponent } from './Components/collections/collections.component';
 import { EditArtefactComponent } from './Components/edit-artefact/edit-artefact.component';
 import { EditCultureComponent } from './Components/edit-culture/edit-culture.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'expos', component: ExpositionsComponent },
   { path: 'expos/old', component: OldExpositionsComponent },
   { path: 'expos/edit/:id', component: EditExpositionComponent },
+  { path: 'addToExpo', component: BasketComponent },
   { path: 'newCulture', component: AddCultureComponent },
   { path: 'newArtefact', component: AddArtefactComponent },
   { path: 'newExpo', component: AddExpositionComponent },

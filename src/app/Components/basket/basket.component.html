@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <h5>Liste des artefacts à envoyer en exposition</h5>
+    </div>
+    <!-- Choix exposition -->
+    <div
+      class="card-body offset-1 col-10 text-dark"
+      *ngIf="itemsToExpose.length > 0"
+    >
+      <p>Choisir l'exposition :</p>
+      <select class="form-control" [(ngModel)]="selectedExposition">
+        <option *ngFor="let item of expositions" [ngValue]="item">
+          {{ item.title }}
+        </option>
+      </select>
+      <div *ngIf="selectedExposition == null">
+        <span class="text-danger">Une exposition est requise</span>
+      </div>
+    </div>
+    <!-- Table -->
+    <div class="card-body offset-1 col-10" *ngIf="itemsToExpose.length > 0">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th class="w-30">Image</th>
+            <th class="w-20">Identifiant</th>
+            <th class="w-50">Nom</th>
+            <th class="w-20">Culture</th>
+            <th class="w-auto"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itemsToExpose">
+            <td scope="row">
+              <img src="{{ item.imageURL }}" *ngIf="item.imageURL != null" />
+
+              <img
+                src="assets/images/noimgavailable.jpg"
+                *ngIf="item.imageURL === null"
+              />
+            </td>
+            <td>{{ item.identification }}</td>
+            <td>
+              <a
+                [routerLink]="['/collections/details', item.identification]"
+                routerLinkActive="router-link-active"
+                >{{ item.name }}</a
+              >
+            </td>
+            <td>
+              <a
+                [routerLink]="['/collections', item.culture.id]"
+                routerLinkActive="router-link-active"
+                >{{ item.culture.name }}</a
+              >
+            </td>
+            <td class="text-center">
+              <button class="btn btn-warning" (click)="retirer(item)">
+                Retirer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Boutons -->
+    <div class="card-footer" *ngIf="itemsToExpose.length > 0; else emptyBasket">
+      <div class="offset-2 col-8">
+        <button
+          *ngIf="selectedExposition != null; else noExpoSelected"
+          type="button"
+          class="btn btn-danger col-8 offset-1"
+          (click)="sendToExpo()"
+        >
+          Envoyer en Exposition
+        </button>
+      </div>
+    </div>
+    <ng-template #noExpoSelected
+      ><div placement="top" ngbTooltip="Sélectionnez une exposition">
+        <button type="button" class="btn btn-primary col-8 offset-1" disabled>
+          Envoyer en Exposition
+        </button>
+      </div>
+    </ng-template>
+    <ng-template #emptyBasket>
+      <div class="card-body offset-1 col-10 text-center">
+        <h4>Aucun artefact sélectionné</h4>
+      </div>
+    </ng-template>
+  </div>
+</div>

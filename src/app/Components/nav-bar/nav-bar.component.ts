@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
   isMenuCollapsed: boolean = true;
+  basketLength: number = 0;
 
-  constructor() {}
+  constructor(private _basketService: BasketService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._basketService.currentBasketLength.subscribe(
+      (resp) => (this.basketLength = resp)
+    );
+  }
 
   toggleMenu() {
     this.isMenuCollapsed = !this.isMenuCollapsed;

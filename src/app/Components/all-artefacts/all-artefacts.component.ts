@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ArtefactService } from 'src/app/services/artefact.service';
+import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
   selector: 'app-all-artefacts',
@@ -15,7 +16,10 @@ export class AllArtefactsComponent implements OnInit {
 
   artefacts: IArtefact[] = [];
 
-  constructor(private _artefactService: ArtefactService) {}
+  constructor(
+    private _artefactService: ArtefactService,
+    private _basketService: BasketService
+  ) {}
 
   ngOnInit(): void {
     this.loadData(1, this.pageSize); //Initial page load
@@ -41,5 +45,9 @@ export class AllArtefactsComponent implements OnInit {
       },
       (err) => console.log(`Error while loading the artefacts : ${err}`)
     );
+  }
+
+  sendToBasket(artefact: IArtefact) {
+    this._basketService.addToBasket(artefact);
   }
 }

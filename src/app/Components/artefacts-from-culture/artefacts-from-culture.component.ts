@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ICulture } from 'src/app/domain/iculture';
+import { BasketService } from 'src/app/services/basket.service';
 import { CultureService } from 'src/app/services/culture.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class ArtefactsFromCultureComponent implements OnInit {
     private _cultureService: CultureService,
     private _route: ActivatedRoute,
     private _modalService: NgbModal,
-    private _router: Router
+    private _router: Router,
+    private _basketService: BasketService
   ) {}
 
   ngOnInit(): void {
@@ -85,5 +87,9 @@ export class ArtefactsFromCultureComponent implements OnInit {
           (err) => console.log(`Error while loading the artefacts : ${err}`)
         );
     });
+  }
+
+  sendToBasket(artefact: IArtefact) {
+    this._basketService.addToBasket(artefact);
   }
 }

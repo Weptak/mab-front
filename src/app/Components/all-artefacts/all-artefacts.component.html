@@ -56,14 +56,34 @@
         </p>
       </div>
     </div>
-    <div class="col-md-2 mt-4">
-      <a
-        class="btn btn-primary"
-        [routerLink]="['details/', item.identification]"
-        routerLinkActive="router-link-active"
-        role="button"
-        >Voir détails</a
-      >
+    <div class="col-lg-2 mt-4">
+      <div class="container">
+        <a
+          class="btn btn-primary m-1 w-100"
+          [routerLink]="['details/', item.identification]"
+          routerLinkActive="router-link-active"
+          role="button"
+          >Voir détails</a
+        >
+        <div *ngIf="item.inExposition; else NotInExpo">
+          <div
+            placement="bottom"
+            ngbTooltip="L'objet est dans une exposition !"
+          >
+            <button class="btn btn-warning m-1 w-100" role="button" disabled>
+              Exposer
+            </button>
+          </div>
+        </div>
+        <ng-template #NotInExpo>
+          <a
+            class="btn btn-warning m-1 w-100"
+            role="button"
+            (click)="sendToBasket(item)"
+            >Exposer</a
+          >
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>
