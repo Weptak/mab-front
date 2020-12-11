@@ -4,6 +4,7 @@ import { IArtefact } from 'src/app/domain/iartefact';
 import { ArtefactService } from 'src/app/services/artefact.service';
 import { Location } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
   selector: 'app-artefact-details',
@@ -19,7 +20,8 @@ export class ArtefactDetailsComponent implements OnInit {
     private _artefactService: ArtefactService,
     private _route: ActivatedRoute,
     private _modalService: NgbModal,
-    private _router: Router
+    private _router: Router,
+    private _basketService: BasketService
   ) {}
 
   ngOnInit(): void {
@@ -76,5 +78,9 @@ export class ArtefactDetailsComponent implements OnInit {
         },
         (err) => console.log('Error moving artefact to ' + room)
       );
+  }
+
+  sendToBasket() {
+    this._basketService.addToBasket(this.artefact);
   }
 }

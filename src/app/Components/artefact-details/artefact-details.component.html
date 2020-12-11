@@ -86,7 +86,9 @@
             Déplacer
           </button>
         </div>
-
+        <div placement="top" ngbTooltip="L'objet est dans une exposition !">
+          <button class="btn btn-success w-100 my-2" disabled>Supprimer</button>
+        </div>
         <!-- Bouton pour le conservateur -->
         <div placement="bottom" ngbTooltip="L'objet est dans une exposition !">
           <button class="btn btn-warning w-100 my-2" role="button" disabled>
@@ -192,17 +194,13 @@
           </div>
         </ng-template>
         <!-- Bouton pour Conservateur -->
-        <a class="btn btn-warning w-100 my-2" role="button">Exposer</a>
+        <a
+          class="btn btn-warning w-100 my-2"
+          role="button"
+          (click)="sendToBasket()"
+          >Exposer</a
+        >
       </ng-template>
     </div>
-  </div>
-  <div class="card-footer text-muted">
-    <button
-      class="btn"
-      [routerLink]="['/collections']"
-      routerLinkActive="router-link-active"
-    >
-      <i class="fa fa-angle-double-left"></i> Retour
-    </button>
   </div>
 </div>
