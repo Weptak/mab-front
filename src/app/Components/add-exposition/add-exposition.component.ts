@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { IExposition } from 'src/app/domain/iexposition';
 import { ExpositionService } from 'src/app/services/exposition.service';
@@ -21,10 +26,10 @@ export class AddExpositionComponent implements OnInit {
   ngOnInit(): void {
     this.form = this._formBuilder.group({
       id: new FormControl(null),
-      title: new FormControl(),
+      title: new FormControl('', Validators.required),
       description: new FormControl(),
-      startDate: new FormControl(),
-      endDate: new FormControl(),
+      startDate: new FormControl('', Validators.required),
+      endDate: new FormControl('', Validators.required),
       imageUrl: new FormControl(),
     });
   }
