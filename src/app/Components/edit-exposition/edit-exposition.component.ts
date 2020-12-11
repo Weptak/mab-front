@@ -53,8 +53,4 @@ export class EditExpositionComponent implements OnInit {
       this._router.navigate(['/expos']);
     });
   }
-
-  public back() {
-    this._router.navigate(['/expos']);
-  }
 }

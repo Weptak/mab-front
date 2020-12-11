@@ -1,6 +1,6 @@
 <div class="card offset-lg-2 col-lg-8 border-0">
   <div class="card-header bg-primary text-white text-center">
-    <h4>Modifier la culture</h4>
+    <h4>Modifier l'exposition</h4>
   </div>
   <div class="card-body">
     <div class="container-fluid form-group mb-5">
@@ -84,9 +84,15 @@
 
         <div class="col text-center">
           <button class="btn btn-primary mx-2" type="submit">
-            Modifier la culture
+            Modifier l'exposition
           </button>
-          <button class="btn btn-warning mx-2" (click)="back()">Annuler</button>
+          <button
+            class="btn btn-warning mx-2"
+            [routerLink]="['/expos']"
+            routerLinkActive="router-link-active"
+          >
+            Annuler
+          </button>
         </div>
       </form>
     </div>
