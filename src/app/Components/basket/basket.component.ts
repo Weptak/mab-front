@@ -44,7 +44,12 @@ export class BasketComponent implements OnInit {
     this.itemsToExpose.forEach((element) => {
       artefactIdList.push(element.identification);
     });
-    console.log('Items in the array : ' + artefactIdList);
+    console.log(
+      'Artefacts send to exposition ' +
+        this.selectedExposition.title +
+        ' : ' +
+        artefactIdList
+    );
     this._expositionService
       .addArtefacts(this.selectedExposition.id, artefactIdList)
       .subscribe(
