@@ -41,13 +41,31 @@
       >
     </ul>
     <ul class="navbar-nav ml-auto">
-      <a class="nav-link" [routerLink]="['/addToExpo']">
+      <a
+        class="nav-link"
+        [routerLink]="['/addToExpo']"
+        *ngIf="isLoggedIn() && getJwtSubjet().includes('CONSERVATEUR')"
+      >
         <i class="fa fa-shopping-basket" style="font-size: 24px"></i>
         <span class="badge badge-success display1" style="font-size: 1rem"
           >{{ basketLength }}
         </span></a
       >
-      <a href="#" class="nav-link">Connexion</a>
+      <a
+        class="nav-link"
+        [routerLink]="['/login']"
+        [queryParams]="{ returnUrl: '/welcome' }"
+        routerLinkActive="router-link-active"
+        *ngIf="!isLoggedIn()"
+        >Connexion</a
+      >
+      <a
+        class="nav-link"
+        [routerLink]="['/logout']"
+        routerLinkActive="router-link-active"
+        *ngIf="isLoggedIn()"
+        >Déconnexion</a
+      >
     </ul>
   </div>
 </nav>

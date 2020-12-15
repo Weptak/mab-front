@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
@@ -10,7 +11,10 @@ export class NavBarComponent implements OnInit {
   isMenuCollapsed: boolean = true;
   basketLength: number = 0;
 
-  constructor(private _basketService: BasketService) {}
+  constructor(
+    private _basketService: BasketService,
+    private _authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
     this._basketService.currentBasketLength.subscribe(
@@ -20,5 +24,13 @@ export class NavBarComponent implements OnInit {
 
   toggleMenu() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
+  }
+
+  isLoggedIn(): boolean {
+    return this._authenticationService.isLoggedIn();
+  }
+
+  getJwtSubjet(): string {
+    return this._authenticationService.getJwtSubjet();
   }
 }

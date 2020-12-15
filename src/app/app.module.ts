@@ -7,7 +7,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CollectionsComponent } from './Components/collections/collections.component';
 import { AllArtefactsComponent } from './Components/all-artefacts/all-artefacts.component';
 import { ArtefactsFromCultureComponent } from './Components/artefacts-from-culture/artefacts-from-culture.component';
@@ -24,6 +24,8 @@ import { EditArtefactComponent } from './Components/edit-artefact/edit-artefact.
 import { EditCultureComponent } from './Components/edit-culture/edit-culture.component';
 import { EditExpositionComponent } from './Components/edit-exposition/edit-exposition.component';
 import { BasketComponent } from './Components/basket/basket.component';
+import { LoginComponent } from './Components/login/login.component';
+import { JwtInterceptor } from './interceptors/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { BasketComponent } from './Components/basket/basket.component';
     EditCultureComponent,
     EditExpositionComponent,
     BasketComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,13 @@ import { BasketComponent } from './Components/basket/basket.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

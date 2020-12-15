@@ -13,18 +13,44 @@ import { EditCultureComponent } from './Components/edit-culture/edit-culture.com
 import { EditExpositionComponent } from './Components/edit-exposition/edit-exposition.component';
 import { ExpositionsComponent } from './Components/expositions/expositions.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
+import { LoginComponent } from './Components/login/login.component';
 import { OldExpositionsComponent } from './Components/old-expositions/old-expositions.component';
+import { ChercheurGuard } from './guards/chercheur.guard';
+import { ConservateurGuard } from './guards/conservateur.guard';
+import { LogoutResolver } from './resolvers/logout.service';
 
 const routes: Routes = [
   { path: 'welcome', component: HomePageComponent },
   { path: '', pathMatch: 'full', redirectTo: 'welcome' },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: HomePageComponent, resolve: [LogoutResolver] },
   { path: 'expos', component: ExpositionsComponent },
   { path: 'expos/old', component: OldExpositionsComponent },
-  { path: 'expos/edit/:id', component: EditExpositionComponent },
-  { path: 'addToExpo', component: BasketComponent },
-  { path: 'newCulture', component: AddCultureComponent },
-  { path: 'newArtefact', component: AddArtefactComponent },
-  { path: 'newExpo', component: AddExpositionComponent },
+  {
+    path: 'expos/edit/:id',
+    component: EditExpositionComponent,
+    canActivate: [ConservateurGuard],
+  },
+  {
+    path: 'addToExpo',
+    component: BasketComponent,
+    canActivate: [ConservateurGuard],
+  },
+  {
+    path: 'newCulture',
+    component: AddCultureComponent,
+    canActivate: [ChercheurGuard],
+  },
+  {
+    path: 'newArtefact',
+    component: AddArtefactComponent,
+    canActivate: [ChercheurGuard],
+  },
+  {
+    path: 'newExpo',
+    component: AddExpositionComponent,
+    canActivate: [ConservateurGuard],
+  },
 
   {
     path: 'collections',
@@ -32,7 +58,11 @@ const routes: Routes = [
     children: [
       { path: '', component: AllArtefactsComponent },
       { path: ':id', component: ArtefactsFromCultureComponent },
-      { path: ':id/editCulture', component: EditCultureComponent },
+      {
+        path: ':id/editCulture',
+        component: EditCultureComponent,
+        canActivate: [ChercheurGuard],
+      },
       { path: 'details/:identification', component: ArtefactDetailsComponent },
       {
         path: ':id/details/:identification',
@@ -41,6 +71,7 @@ const routes: Routes = [
       {
         path: 'details/:identification/editArtefact',
         component: EditArtefactComponent,
+        canActivate: [ChercheurGuard],
       },
     ],
   },
