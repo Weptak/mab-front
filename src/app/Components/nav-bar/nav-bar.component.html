@@ -44,7 +44,7 @@
       <a
         class="nav-link"
         [routerLink]="['/addToExpo']"
-        *ngIf="isLoggedIn() && getJwtSubjet().includes('CONSERVATEUR')"
+        *ngIf="isLoggedIn() && getJwtAuthority().includes('CONSERVATEUR')"
       >
         <i class="fa fa-shopping-basket" style="font-size: 24px"></i>
         <span class="badge badge-success display1" style="font-size: 1rem"

@@ -38,7 +38,7 @@ export class AuthenticationService {
     return localStorage.getItem('currentUser') ? true : false;
   }
 
-  getJwtSubjet(): string {
+  getJwtAuthority(): string {
     const stored = localStorage.getItem('currentUser');
     if (stored) {
       const helper = new JwtHelperService();

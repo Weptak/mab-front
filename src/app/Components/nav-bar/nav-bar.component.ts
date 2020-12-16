@@ -30,7 +30,7 @@ export class NavBarComponent implements OnInit {
     return this._authenticationService.isLoggedIn();
   }
 
-  getJwtSubjet(): string {
-    return this._authenticationService.getJwtSubjet();
+  getJwtAuthority(): string {
+    return this._authenticationService.getJwtAuthority();
   }
 }

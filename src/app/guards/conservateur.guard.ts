@@ -17,7 +17,9 @@ export class ConservateurGuard implements CanActivate {
   constructor(private _authenticationService: AuthenticationService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this._authenticationService.getJwtSubjet().includes('CONSERVATEUR')) {
+    if (
+      this._authenticationService.getJwtAuthority().includes('CONSERVATEUR')
+    ) {
       return true;
     }
   }

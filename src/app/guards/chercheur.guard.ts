@@ -14,7 +14,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class ChercheurGuard implements CanActivate {
   constructor(private _authenticationService: AuthenticationService) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this._authenticationService.getJwtSubjet().includes('CHERCHEUR')) {
+    if (this._authenticationService.getJwtAuthority().includes('CHERCHEUR')) {
       return true;
     }
   }
