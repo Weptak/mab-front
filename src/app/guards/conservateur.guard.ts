@@ -3,18 +3,18 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree,
   Router,
-  ɵangular_packages_router_router_b,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConservateurGuard implements CanActivate {
-  constructor(private _authenticationService: AuthenticationService) {}
+  constructor(
+    private _authenticationService: AuthenticationService,
+    private _router: Router
+  ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (
@@ -22,5 +22,10 @@ export class ConservateurGuard implements CanActivate {
     ) {
       return true;
     }
+    // not logged in so redirect to login page with the return url
+    this._router.navigate(['/login'], {
+      queryParams: { returnUrl: state.url },
+    });
+    return false;
   }
 }
