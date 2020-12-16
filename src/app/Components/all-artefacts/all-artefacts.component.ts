@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ArtefactService } from 'src/app/services/artefact.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BasketService } from 'src/app/services/basket.service';
 
 @Component({
@@ -15,14 +16,17 @@ export class AllArtefactsComponent implements OnInit {
   pageSize: number = 10;
 
   artefacts: IArtefact[] = [];
+  isConservateur: boolean = false;
 
   constructor(
     private _artefactService: ArtefactService,
-    private _basketService: BasketService
+    private _basketService: BasketService,
+    private _authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
     this.loadData(1, this.pageSize); //Initial page load
+    this.isConservateur = this.getJwtAuthority().includes('CONSERVATEUR');
   }
 
   // Event handler for page change
@@ -49,5 +53,9 @@ export class AllArtefactsComponent implements OnInit {
 
   sendToBasket(artefact: IArtefact) {
     this._basketService.addToBasket(artefact);
+  }
+
+  getJwtAuthority(): string {
+    return this._authenticationService.getJwtAuthority();
   }
 }

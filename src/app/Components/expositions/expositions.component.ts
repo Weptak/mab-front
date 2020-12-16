@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IExposition } from 'src/app/domain/iexposition';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ExpositionService } from 'src/app/services/exposition.service';
 
 @Component({
@@ -18,11 +19,13 @@ export class ExpositionsComponent implements OnInit {
   expositions: IExposition[];
   exposition: IExposition;
   form: FormGroup;
+  isConservateur: boolean = false;
 
   constructor(
     private _expoService: ExpositionService,
     private _modalService: NgbModal,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private _authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,9 @@ export class ExpositionsComponent implements OnInit {
         Validators.pattern('^[1-9][0-9]{0,1}$'),
       ]),
     });
+    this.isConservateur = this._authenticationService
+      .getJwtAuthority()
+      .includes('CONSERVATEUR');
   }
   open(modal, expo: IExposition) {
     this.exposition = expo;

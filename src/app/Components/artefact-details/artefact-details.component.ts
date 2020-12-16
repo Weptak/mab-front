@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ArtefactService } from 'src/app/services/artefact.service';
-import { Location } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BasketService } from 'src/app/services/basket.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-artefact-details',
@@ -15,13 +15,15 @@ export class ArtefactDetailsComponent implements OnInit {
   artefact: IArtefact;
   identification: string;
   room: string = null;
+  isChercheur: boolean = false;
 
   constructor(
     private _artefactService: ArtefactService,
     private _route: ActivatedRoute,
     private _modalService: NgbModal,
     private _router: Router,
-    private _basketService: BasketService
+    private _basketService: BasketService,
+    private _authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class ArtefactDetailsComponent implements OnInit {
         .getArtefactDetails(this.identification)
         .subscribe((resp) => (this.artefact = resp));
     });
+    this.isChercheur = this.getJwtAuthority().includes('CHERCHEUR');
   }
 
   open(modal) {
@@ -82,5 +85,9 @@ export class ArtefactDetailsComponent implements OnInit {
 
   sendToBasket() {
     this._basketService.addToBasket(this.artefact);
+  }
+
+  getJwtAuthority(): string {
+    return this._authenticationService.getJwtAuthority();
   }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IArtefact } from 'src/app/domain/iartefact';
 import { ICulture } from 'src/app/domain/iculture';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { BasketService } from 'src/app/services/basket.service';
 import { CultureService } from 'src/app/services/culture.service';
 
@@ -16,6 +17,8 @@ export class ArtefactsFromCultureComponent implements OnInit {
   totalElements: number = 0;
   page: number = 1;
   pageSize: number = 10;
+  isChercheur: boolean = false;
+  isConservateur: boolean = false;
 
   culture: ICulture;
   artefacts: IArtefact[] = [];
@@ -25,11 +28,14 @@ export class ArtefactsFromCultureComponent implements OnInit {
     private _route: ActivatedRoute,
     private _modalService: NgbModal,
     private _router: Router,
-    private _basketService: BasketService
+    private _basketService: BasketService,
+    private _authenticationService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
     this.loadData(1, this.pageSize); //Initial page load
+    this.isChercheur = this.getJwtAuthority().includes('CHERCHEUR');
+    this.isConservateur = this.getJwtAuthority().includes('CONSERVATEUR');
   }
 
   open(supprimer) {
@@ -91,5 +97,9 @@ export class ArtefactsFromCultureComponent implements OnInit {
 
   sendToBasket(artefact: IArtefact) {
     this._basketService.addToBasket(artefact);
+  }
+
+  getJwtAuthority(): string {
+    return this._authenticationService.getJwtAuthority();
   }
 }

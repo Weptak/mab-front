@@ -23,9 +23,8 @@
         >
       </div>
     </div>
-    <div class="sidebar"></div>
     <div class="col-md-10 pr-md-5">
-      <div class="d-flex justify-content-end mb-2">
+      <div class="d-flex justify-content-end mb-2" *ngIf="isChercheur">
         <button class="btn btn-success mx-1" [routerLink]="['/newCulture']">
           Ajouter Culture
         </button>

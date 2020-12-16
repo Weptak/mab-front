@@ -1,5 +1,5 @@
 <!-- Bouton pour le niveau Conservateur -->
-<div class="d-flex justify-content-end my-2">
+<div class="d-flex justify-content-end my-2" *ngIf="isConservateur">
   <button
     class="btn btn-warning"
     [routerLink]="['/newExpo']"
@@ -24,6 +24,10 @@
                 <p class="card-text" style="white-space: pre-wrap">
                   {{ item.description }}
                 </p>
+                <p class="card-text">
+                  <span class="text text-success">Nombre de visiteurs :</span>
+                  {{ item.visitorCount }}
+                </p>
                 <div class="card-footer row">
                   <h5 class="card-title col-xl-2">Dates</h5>
                   <p class="card-text col-xl-6">
@@ -40,7 +44,7 @@
                   >
                 </div>
                 <!-- Boutons pour le niveau Conservateur -->
-                <div class="row">
+                <div class="row" *ngIf="isConservateur">
                   <button
                     class="btn btn-warning m-1"
                     [routerLink]="['/expos/edit', item.id]"

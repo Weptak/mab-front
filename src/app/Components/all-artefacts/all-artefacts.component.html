@@ -65,24 +65,26 @@
           role="button"
           >Voir détails</a
         >
-        <div *ngIf="item.inExposition; else NotInExpo">
-          <div
-            placement="bottom"
-            ngbTooltip="L'objet est dans une exposition !"
-          >
-            <button class="btn btn-warning m-1 w-100" role="button" disabled>
-              Exposer
-            </button>
+        <div *ngIf="isConservateur">
+          <div *ngIf="item.inExposition; else NotInExpo">
+            <div
+              placement="bottom"
+              ngbTooltip="L'objet est dans une exposition !"
+            >
+              <button class="btn btn-warning m-1 w-100" role="button" disabled>
+                Exposer
+              </button>
+            </div>
           </div>
+          <ng-template #NotInExpo>
+            <a
+              class="btn btn-warning m-1 w-100"
+              role="button"
+              (click)="sendToBasket(item)"
+              >Exposer</a
+            >
+          </ng-template>
         </div>
-        <ng-template #NotInExpo>
-          <a
-            class="btn btn-warning m-1 w-100"
-            role="button"
-            (click)="sendToBasket(item)"
-            >Exposer</a
-          >
-        </ng-template>
       </div>
     </div>
   </div>

@@ -71,7 +71,7 @@
       </div>
     </div>
     <!-- Boutons pour Chercheurs -->
-    <div class="col-md-2 my-4 px-2">
+    <div class="col-md-2 my-4 px-2" *ngIf="isChercheur">
       <button
         class="btn btn-success w-100 my-2"
         role="button"
@@ -90,7 +90,11 @@
           <button class="btn btn-success w-100 my-2" disabled>Supprimer</button>
         </div>
         <!-- Bouton pour le conservateur -->
-        <div placement="bottom" ngbTooltip="L'objet est dans une exposition !">
+        <div
+          placement="bottom"
+          ngbTooltip="L'objet est dans une exposition !"
+          *ngIf="getJwtAuthority().includes('CONSERVATEUR')"
+        >
           <button class="btn btn-warning w-100 my-2" role="button" disabled>
             Exposer
           </button>
@@ -195,6 +199,7 @@
         </ng-template>
         <!-- Bouton pour Conservateur -->
         <a
+          *ngIf="getJwtAuthority().includes('CONSERVATEUR')"
           class="btn btn-warning w-100 my-2"
           role="button"
           (click)="sendToBasket()"
